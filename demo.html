@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LeonidaLoop Studio Demo</title>
+<meta name="description" content="A walkthrough of LeonidaLoop Studio using real output from the app.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="assets/logo.webp" alt="LeonidaLoop logo"><span>Leonida<b>Loop</b> Studio</span></a>
+  <nav class="links"><a href="./">Home</a><a href="demo.html" aria-current="page">Demo</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+</div></header>
+
+<main class="wrap">
+<h1><span class="grad">Demo</span>: one cycle of LeonidaLoop Studio</h1>
+<p class="lead">Each step below shows real output captured from the app on 2026-11-18. Secrets and tokens are never printed, so none appear here. Channel IDs are public.</p>
+<div class="langsw"><a href="#es">Español ↓</a></div>
+
+<ol class="flow">
+<li><b>Connect an account through the official OAuth flow.</b> The owner runs the app, a browser window opens the platform's own consent page, and the app keeps only an encrypted token. Afterwards it confirms which channel was authorized:
+<pre class="term"><span class="c">&gt; conectar_youtube.cmd verify --account youtube_es</span>
+youtube_es: <span class="g">authorized channel</span> → {"channel_id": "UClO1tC-zysYM57tIMCDQDgg", "title": "LeonidaLoop ES", "handle": "@leonidaloopesp", "privacy": "public"}
+<span class="c">&gt; conectar_youtube.cmd verify --account youtube_en</span>
+youtube_en: <span class="g">authorized channel</span> → {"channel_id": "UCqXjZSERsJvM4P4P23Edubg", "title": "LeonidaLoop En", "handle": "@leonidaloopeng", "privacy": "public"}</pre>
+Scope: <code>youtube.readonly</code> only. If the authorized channel ID does not match the confirmed one, the app stops (exit code 3).</li>
+
+<li><b>Find GTA 6 topics from public metadata.</b> The app reads public feeds every 30 minutes and ranks topics by how fast they are growing. Last run:
+<div class="tbl"><table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Creators monitored (ES + EN)</td><td>20</td></tr>
+<tr><td>GTA 6 items in the last 72 h</td><td>4,035</td></tr>
+<tr><td>Videos downloaded</td><td>0 (metadata only)</td></tr>
+<tr><td>Clips with verified commercial permission</td><td>0 → <span class="pill bad">all blocked</span></td></tr>
+<tr><td>Flagged as risky (leaks, “free” scams…)</td><td>8</td></tr>
+</table></div>
+These items only point to trends. For original videos, LeonidaLoop writes its own script and analysis.</li>
+
+<li><b>Produce the video locally.</b> Each original Short is rendered on the owner's PC at 1080×1920 with an AI narration voice (Kokoro-82M, Apache-2.0) and subtitles checked against the reviewed script. Short 001, both versions:
+<div class="tbl"><table>
+<tr><th>Version</th><th>Length</th><th>Subtitle accuracy</th><th>Loudness</th><th>Status</th></tr>
+<tr><td>ES</td><td>36.4 s</td><td>100 %</td><td>−14.2 LUFS</td><td><span class="pill warn">awaiting approval</span></td></tr>
+<tr><td>EN</td><td>38.0 s</td><td>100 %</td><td>−14.2 LUFS</td><td><span class="pill warn">awaiting approval</span></td></tr>
+</table></div></li>
+
+<li><b>Rights gate.</b> Before rendering in real mode, every input file is hashed and checked against the rights register. A file without a recorded license stops production:
+<pre class="term"><span class="c"># recorded result: real-mode test job using a third-party clip with no permission on record</span>
+status: <span class="r">blocked_rights</span> · reason: sin_permiso (no verified commercial permission)
+monetizable: false</pre></li>
+
+<li><b>Human approval.</b> Finished videos stay in the queue as <code>awaiting_approval</code>. The owner watches them and decides. The app has no automatic publishing.</li>
+
+<li><b>TikTok (pending review).</b> When the TikTok app is approved, the same flow will run with Login Kit: sign in on TikTok's page → read <code>user.info.basic</code> (display name, avatar, open ID) → confirm it is the LeonidaLoop ES or EN account → store the token encrypted on the PC. Uploads will need a separate approval and remain human-approved.</li>
+</ol>
+
+<hr class="sep" id="es">
+<section lang="es">
+<h2>Demostración (español)</h2>
+<p>Datos reales del 2026-11-18, sin secretos ni tokens. El ciclo tiene seis pasos:</p>
+<ol>
+<li><b>Conexión de cuentas:</b> OAuth oficial con permiso mínimo (<code>youtube.readonly</code>). La app verifica el canal autorizado: «LeonidaLoop ES» y «LeonidaLoop En».</li>
+<li><b>Investigación:</b> analiza metadatos públicos de 20 creadores: 4035 elementos de GTA 6 en 72 h, 0 vídeos descargados y todos los clips bloqueados sin permiso comercial.</li>
+<li><b>Producción local:</b> Short 001 ES (36,4 s) y EN (38,0 s), con subtítulos al 100 % y −14,2 LUFS.</li>
+<li><b>Control de derechos:</b> se bloquea cualquier archivo sin licencia registrada.</li>
+<li><b>Aprobación humana:</b> nada se publica de forma automática.</li>
+<li><b>TikTok (pendiente de revisión):</b> Login Kit con <code>user.info.basic</code> para confirmar la cuenta. El token se guarda cifrado en el equipo.</li>
+</ol>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 LeonidaLoop · Fan project. Not affiliated with Rockstar Games, Take-Two Interactive, TikTok, ByteDance or Google.</span>
+  <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://github.com/leonidaloop/leonidaloop.github.io/issues">Contact</a></span>
+</div></footer>
+</body>
+</html>

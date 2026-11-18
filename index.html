@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LeonidaLoop Studio</title>
+<meta name="description" content="LeonidaLoop Studio is the private Windows desktop app that the LeonidaLoop GTA 6 channels use to plan, produce and review their own short videos.">
+<link rel="icon" href="assets/icon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><img src="assets/logo.webp" alt="LeonidaLoop logo"><span>Leonida<b>Loop</b> Studio</span></a>
+  <nav class="links"><a href="./" aria-current="page">Home</a><a href="demo.html">Demo</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+  <img class="banner" src="assets/banner.webp" width="1600" height="900" alt="LeonidaLoop banner: neon city at sunset with the LeonidaLoop logo">
+  <h1><span class="grad">LeonidaLoop Studio</span> — the desktop app behind the LeonidaLoop channels</h1>
+  <p class="lead">LeonidaLoop is a fan channel about GTA 6, published in Spanish and English on YouTube and TikTok. LeonidaLoop Studio is the Windows desktop application the channel owner uses to research topics, produce short vertical videos and keep every upload under human review.</p>
+  <div class="langsw"><a href="#es">Español ↓</a><a href="demo.html">See the demo →</a></div>
+</section>
+
+<h2>What the app does</h2>
+<div class="grid">
+  <div class="card"><h3>1 · Research</h3><p>Reads public metadata (titles, dates, view counts) from YouTube RSS feeds and the Twitch API to spot GTA 6 topics. It does not download other people's videos.</p></div>
+  <div class="card"><h3>2 · Produce</h3><p>Builds 1080×1920 videos locally with original narration, subtitles checked for ≥ 99 % accuracy, normalized audio and quality checks.</p></div>
+  <div class="card"><h3>3 · Rights check</h3><p>Every file must have its license recorded. Third-party clips stay blocked unless the creator has given written commercial permission.</p></div>
+  <div class="card"><h3>4 · Human approval</h3><p>Finished videos wait in a review queue. Nothing is published without the owner's explicit approval.</p></div>
+</div>
+
+<h2>How it uses TikTok</h2>
+<p>The app connects only to the two TikTok accounts owned by LeonidaLoop (Spanish and English). It is not offered to the public and other people cannot sign in to it.</p>
+<ol class="flow">
+  <li><b>Login Kit (scope <code>user.info.basic</code>).</b> The owner signs in through TikTok's official authorization page. The app reads the account's display name, avatar and open ID to confirm that the correct LeonidaLoop account is connected.</li>
+  <li><b>Local, encrypted storage.</b> The access token is encrypted with Windows DPAPI and stored only on the owner's computer. LeonidaLoop has no servers or databases in the cloud.</li>
+  <li><b>Uploads (planned, not active).</b> In a later phase, the app may use TikTok's Content Posting API to send videos the owner has approved to the LeonidaLoop accounts. That requires TikTok's approval and a new authorization from the owner.</li>
+  <li><b>Revoke at any time.</b> The owner can disconnect from the app, which deletes the local token, or from TikTok's app permission settings.</li>
+</ol>
+<p class="note">Status (2026-11-18): the YouTube connection works with read-only access. The TikTok connection is pending TikTok's developer review. No video has been published automatically.</p>
+
+<h2>Principles</h2>
+<ul>
+  <li>Original commentary, analysis and editing. No reposts of other creators' content without their written permission.</li>
+  <li>No bots, bought engagement, misleading titles or spam.</li>
+  <li>The narration voice is a licensed open-source synthetic voice (Kokoro-82M, Apache-2.0). It does not imitate any real person, and videos say that the voice is AI-generated.</li>
+</ul>
+
+<hr class="sep" id="es">
+<section lang="es">
+<h2>LeonidaLoop Studio (español)</h2>
+<p class="lead">LeonidaLoop es un canal fan de GTA 6 en español e inglés, en YouTube y TikTok. LeonidaLoop Studio es la aplicación de escritorio para Windows con la que el propietario del canal investiga temas, produce vídeos cortos verticales y mantiene cada publicación bajo revisión humana.</p>
+<h3>Funciones</h3>
+<ul>
+  <li><b>Investigación:</b> lee metadatos públicos (títulos, fechas, visualizaciones) de los feeds RSS de YouTube y de la API de Twitch. No descarga vídeos ajenos.</li>
+  <li><b>Producción:</b> genera vídeos 1080×1920 en el propio equipo con narración original, subtítulos verificados (≥ 99 %), audio normalizado y control de calidad.</li>
+  <li><b>Derechos:</b> cada archivo necesita su licencia registrada. Los clips de terceros quedan bloqueados sin permiso comercial escrito.</li>
+  <li><b>Aprobación humana:</b> nada se publica sin la aprobación expresa del propietario.</li>
+</ul>
+<h3>Uso de TikTok</h3>
+<p>Solo se conecta a las dos cuentas de TikTok de LeonidaLoop (ES y EN), mediante Login Kit con el permiso <code>user.info.basic</code>, para comprobar la identidad de la cuenta. El token se guarda cifrado con DPAPI de Windows únicamente en el equipo del propietario. La publicación mediante Content Posting API está prevista, pero todavía no está activa: requerirá la aprobación de TikTok y una nueva autorización del propietario. La aplicación no se ofrece al público.</p>
+<p>Ver la <a href="demo.html#es">demostración</a>, los <a href="terms.html#es">términos</a> y la <a href="privacy.html#es">política de privacidad</a>.</p>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 LeonidaLoop · Fan project. Not affiliated with Rockstar Games, Take-Two Interactive, TikTok, ByteDance or Google.</span>
+  <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://github.com/leonidaloop/leonidaloop.github.io/issues">Contact</a></span>
+</div></footer>
+</body>
+</html>
